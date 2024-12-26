@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+  Лента записей
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <h1 class="text-center mb-4">Лента записей</h1>
+    {% for post in page_obj %}
+      <article class="mb-5">
+        {% include "includes/post_card.html" %}
+      </article>
+    {% endfor %}
+    {% include "includes/paginator.html" %}
+  </div>
+{% endblock %}

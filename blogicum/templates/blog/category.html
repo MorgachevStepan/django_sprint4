@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+  Публикации в категории {{ category.title }}
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <h1 class="text-center my-4">Публикации в категории - {{ category.title }}</h1>
+    <p class="col-8 offset-2 mb-5 lead text-center">{{ category.description }}</p>
+    <div class="row">
+      {% for post in page_obj %}
+        <div class="col-md-4 mb-4">
+          <article>
+            {% include "includes/post_card.html" %}
+          </article>
+        </div>
+      {% endfor %}
+    </div>
+    {% include "includes/paginator.html" %}
+  </div>
+{% endblock %}

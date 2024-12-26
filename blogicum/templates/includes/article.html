@@ -1,0 +1,23 @@
+{% with request.resolver_match.view_name as view_name %}
+<article class="mb-5">
+  <ul class="list-unstyled">
+    <li><strong>Место:</strong> {{ post.location }}</li>
+    <li><strong>Дата:</strong> {{ post.date }}</li>
+    <li>
+      <strong>Категория:</strong>
+      <a href="{% url 'blog:category_posts' category_slug=post.category.slug %}">{{ post.category.title }}</a>
+    </li>
+  </ul>
+
+  <p>
+    {% if view_name == 'blog:index' %}
+      {{ post.text|truncatewords:10 }}
+      <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-link">
+        Читать полный текст
+      </a>
+    {% else %}
+      {{ post.text }}
+    {% endif %}
+  </p>
+</article>
+{% endwith %}
